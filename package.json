@@ -3,23 +3,40 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "lint": "eslint",
+    "styles:tcm": "tcm src",
+    "sass": "sass --no-source-map src:src && tcm src",
+    "devbuild": "sass --no-source-map src:src && tcm src && eslint --fix . && next build",
     "build": "next build --turbopack",
+    "dev": "sass --no-source-map src:src && tcm src && URL=beta.rsasesorjuridico.com NEXTAUTH_URL=https://beta.rsasesorjuridico.com next dev --turbopack",
     "start": "next start",
-    "lint": "eslint"
+    "db:migrate": "prisma migrate dev --name init --create-only && prisma generate",
+    "db:push": "prisma db push",
+    "json-to-prisma": "json-to-prisma-schema-convertor convert --inputPath='./prisma/schema.json' --outputPath='./prisma/new/schema.prisma'"
   },
   "dependencies": {
+    "@eslint/js": "^9.36.0",
+    "@stylistic/eslint-plugin": "^5.4.0",
+    "eslint-plugin-react": "^7.37.5",
+    "jiti": "^2.6.1",
+    "material-symbols": "^0.36.2",
+    "mongodb": "^6.20.0",
+    "next": "15.5.4",
+    "prettier": "^3.6.2",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "next": "15.5.4"
+    "sass": "^1.93.2",
+    "typed-css-modules": "^0.9.1",
+    "typed-scss-modules": "^8.1.1",
+    "typescript-eslint": "^8.45.0"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@eslint/eslintrc": "^3",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.5.4",
-    "@eslint/eslintrc": "^3"
+    "typescript": "^5"
   }
 }
