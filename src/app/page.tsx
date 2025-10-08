@@ -5,7 +5,7 @@ import React, { useRef } from 'react';
 
 export default function Home() {
   const targetRef = useRef<HTMLParagraphElement | null>(
-    null 
+    null
   );
 
   const scrollToElement = () => {
@@ -14,7 +14,7 @@ export default function Home() {
         {
           behavior: 'smooth',
           block   : 'start',
-        } 
+        }
       );
     }
   };
@@ -28,7 +28,9 @@ export default function Home() {
         lea más
       </button>
       {/* ... other content ... */}
-      <div className={styles.parallaxImage1}></div>
+      <div className={ styles.parallaxImage1 }></div>
+      <h1 className={ styles.titleParagraph }>Mujeres que bailan, ensayan, enseñan y heredan la salsa</h1>
+      <h3 className={styles.subtitleParagraph}>Conservación y transmisión del baile de la salsa en Cali</h3>
       <p
         ref={targetRef}
         className={styles.textParagraph}

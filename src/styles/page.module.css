@@ -193,13 +193,55 @@ a.secondary {
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
-  width: 50vw;
-  height: 100vh;
   padding: 4rem;
   font-size: 1rem;
 }
 @media (width < 600px) {
   .textParagraph {
+    width: 100vw;
+    padding: 3rem;
+  }
+}
+
+.titleParagraph {
+  text-align: center;
+  box-sizing: border-box;
+  align-self: center;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  padding: 4rem;
+  font-family: var(--headline-small-font-family-name);
+  font-style: var(--headline-small-font-family-style);
+  font-weight: var(--headline-small-font-weight);
+  font-size: var(--headline-small-font-size);
+  line-height: var(--headline-small-line-height);
+  letter-spacing: var(--headline-small-letter-spacing);
+}
+@media (width < 600px) {
+  .titleParagraph {
+    width: 100vw;
+    padding: 3rem;
+  }
+}
+
+.subtitleParagraph {
+  text-align: center;
+  box-sizing: border-box;
+  align-self: center;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  padding: 4rem;
+  font-family: var(--title-medium-font-family-name);
+  font-style: var(--title-medium-font-family-style);
+  font-weight: var(--title-medium-font-weight);
+  font-size: var(--title-medium-font-size);
+  line-height: var(--title-medium-line-height);
+  letter-spacing: var(--title-medium-letter-spacing);
+}
+@media (width < 600px) {
+  .subtitleParagraph {
     width: 100vw;
     padding: 3rem;
   }

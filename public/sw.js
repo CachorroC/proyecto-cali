@@ -1,6 +1,6 @@
 self.addEventListener(
   'push', function (
-    event 
+    event
   ) {
     if ( event.data ) {
       const data = event.data.json();
@@ -22,26 +22,26 @@ self.addEventListener(
 
       event.waitUntil(
         self.registration.showNotification(
-          data.title, options 
-        ) 
+          data.title, options
+        )
       );
     }
-  } 
+  }
 );
 
 self.addEventListener(
   'notificationclick', function (
-    event 
+    event
   ) {
     console.log(
-      'Notification click received.' 
+      'Notification click received.'
     );
     event.notification.close();
-    // @ts-ignore
+
     event.waitUntil(
       clients.openWindow(
-        '<https://app.rsasesorjuridico.com>' 
-      ) 
+        '<https://app.rsasesorjuridico.com>'
+      )
     );
-  } 
+  }
 );

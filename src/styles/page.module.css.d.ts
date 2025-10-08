@@ -9,7 +9,9 @@ declare const styles: {
   readonly "primary": string;
   readonly "scrollButton": string;
   readonly "secondary": string;
+  readonly "subtitleParagraph": string;
   readonly "textParagraph": string;
+  readonly "titleParagraph": string;
 };
 export = styles;
 
