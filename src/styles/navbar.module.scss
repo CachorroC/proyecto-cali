@@ -1,4 +1,5 @@
 .drawer {
+  box-sizing: border-box;
   container-name: modal;
   z-index: 5;
   container-type: inline-size;
@@ -13,19 +14,12 @@
   display: flex;
   opacity: 1;
   transition: all 1.5s ease-in-out;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(12, 1fr);
   gap: 2vmin;
-  grid-template-areas:
-    'title title title title  drawerMenuButton '
-    '. inputSearchBar inputSearchBar inputSearchBar drawerMenuButton'
-    'ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList' 'ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList' 'ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList' 'ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList' 'ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList' 'ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList' 'ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList' 'ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList' 'ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList' 'ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList';
   justify-content: space-evenly;
   align-content: flex-start;
   justify-items: stretch;
   align-items: stretch;
   color: var(--on-background);
-  box-sizing: border-box;
   grid-gap: 2vmin;
   box-shadow: var(--dp16);
   text-align: center;
@@ -55,6 +49,9 @@
       display: flex;
       flex-flow: column nowrap;
     }
+    .sidenav {
+      width: 100%;
+    }
   }
 }
 .closed {
@@ -80,6 +77,7 @@
   }
 }
 .button {
+  z-index: 10;
   border: none;
   border-radius: var(--shape-corner-large);
 
@@ -143,10 +141,19 @@
           background-color: var(--surface-variant);
         }
       }
+      @media (width < 600px) {
+        bottom: 1%;
+        right: 1%;
+        top: auto;
+        left: auto;
+      }
     }
 
     &Open {
+      @extend .button;
+      width: 50%;
       background-color: var(--secondary);
+      color: var(--on-secondary);
       & > .icon {
         color: var(--on-secondary);
       }

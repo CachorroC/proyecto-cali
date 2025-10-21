@@ -5,6 +5,8 @@ import Link from 'next/link';
 import styles from '#@/styles/layout.module.css';
 import { useNavigationContext } from '#@/app/context/navigation-context';
 import { Route } from 'next';
+import { labelLarge } from '#@/styles/typography.module.css';
+import Paper from '@mui/material/Paper';
 
 export function NavLink<T extends string>(
   {
@@ -15,10 +17,10 @@ export function NavLink<T extends string>(
     iconLabel: string;
     textLabel: string;
     hrefLabel: Route<T> | URL;
-  } 
+  }
 ) {
   const {
-    isNavOpen, setIsNavOpen 
+    isNavOpen, setIsNavOpen
   } = useNavigationContext();
 
   const pathname = usePathname();
@@ -26,20 +28,17 @@ export function NavLink<T extends string>(
   const isActive = pathname === hrefLabel;
 
   return (
+
     <Link
       key={hrefLabel.toString()}
       className={
         isActive
-          ? isNavOpen
             ? styles.linkOpenActive
-            : styles.linkActive
-          : isNavOpen
-            ? styles.linkOpen
-            : styles.link
+            : styles.linkOpen
       }
       onClick={() => {
         setIsNavOpen(
-          false 
+          false
         );
       }}
       href={hrefLabel as Route}
@@ -48,6 +47,7 @@ export function NavLink<T extends string>(
         {iconLabel}
       </span>
       <h1 className={styles.text}>{textLabel}</h1>
-    </Link>
+      </Link>
+
   );
 }

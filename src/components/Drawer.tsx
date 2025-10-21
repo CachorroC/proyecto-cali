@@ -9,38 +9,38 @@ import { useNavigationContext } from '#@/app/context/navigation-context';
 
 export const Drawer = (
   {
-    children
-  }: { children: ReactNode }
+    children 
+  }: { children: ReactNode } 
 ) => {
   const {
-    setIsNavOpen
+    setIsNavOpen 
   } = useNavigationContext();
 
   const wrapper = useRef(
-    null
+    null 
   );
 
   const overlay = useRef(
-    null
+    null 
   );
 
   const onDismiss = useCallback(
     () => {
       setIsNavOpen(
         (
-          n
+          n 
         ) => {
           return !n;
-        }
+        } 
       );
     }, [
       setIsNavOpen
-    ]
+    ] 
   );
 
   const onClick: MouseEventHandler = useCallback(
     (
-      e
+      e 
     ) => {
       if ( e.target === overlay.current || e.target === wrapper.current ) {
         if ( onDismiss ) {
@@ -57,7 +57,7 @@ export const Drawer = (
 
   const onKeyDown = useCallback(
     (
-      e: KeyboardEvent
+      e: KeyboardEvent 
     ) => {
       if ( e.key === 'Escape' ) {
         onDismiss();
@@ -71,17 +71,17 @@ export const Drawer = (
   useEffect(
     () => {
       document.addEventListener(
-        'keydown', onKeyDown
+        'keydown', onKeyDown 
       );
 
       return () => {
         return document.removeEventListener(
-          'keydown', onKeyDown
+          'keydown', onKeyDown 
         );
       };
     }, [
       onKeyDown
-    ]
+    ] 
   );
   /*
   if ( !isNavOpen ) {

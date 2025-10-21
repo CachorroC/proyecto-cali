@@ -11,7 +11,6 @@
   min-height: 100svh;
   padding: 80px;
   gap: 64px;
-  font-family: var(--font-geist-sans);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -142,7 +141,7 @@ a.secondary {
     justify-content: center;
   }
 }
-.parallax, .parallaxImage2, .parallaxImage1 {
+.parallax, .parallaxImage3, .parallaxImage2, .parallaxImage1 {
   /* The image used */
   height: 100vh; /* Create the parallax scrolling effect */
   background-attachment: fixed;
@@ -156,6 +155,9 @@ a.secondary {
 }
 .parallaxImage2 {
   background-image: url("/caliciudad.jpeg"); /* Full height */
+}
+.parallaxImage3 {
+  background-image: url("/escuela_de_baile.jpg"); /* Full height */
 }
 
 .scrollButton {
@@ -193,6 +195,7 @@ a.secondary {
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
+  width: 50vw;
   padding: 4rem;
   font-size: 1rem;
 }
@@ -210,39 +213,104 @@ a.secondary {
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
-  padding: 4rem;
-  font-family: var(--headline-small-font-family-name);
-  font-style: var(--headline-small-font-family-style);
-  font-weight: var(--headline-small-font-weight);
-  font-size: var(--headline-small-font-size);
-  line-height: var(--headline-small-line-height);
-  letter-spacing: var(--headline-small-letter-spacing);
+  padding: 2rem;
+  font-family: var(--headline-large-font-family-name);
+  font-style: var(--headline-large-font-family-style);
+  font-weight: var(--headline-large-font-weight);
+  font-size: var(--headline-large-font-size);
+  line-height: var(--headline-large-line-height);
+  letter-spacing: var(--headline-large-letter-spacing);
+  position: absolute;
+  bottom: 50%;
+  right: 10%;
+  color: var(--on-primary-fixed);
+  background-color: var(--primary-fixed);
 }
 @media (width < 600px) {
   .titleParagraph {
     width: 100vw;
-    padding: 3rem;
+    padding: 1rem;
+    right: 0;
+    bottom: 30%;
   }
 }
 
 .subtitleParagraph {
+  position: absolute;
+  bottom: 15%;
+  right: 10%;
   text-align: center;
   box-sizing: border-box;
   align-self: center;
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
-  padding: 4rem;
+  padding: 2rem;
   font-family: var(--title-medium-font-family-name);
   font-style: var(--title-medium-font-family-style);
   font-weight: var(--title-medium-font-weight);
   font-size: var(--title-medium-font-size);
   line-height: var(--title-medium-line-height);
   letter-spacing: var(--title-medium-letter-spacing);
+  color: var(--on-primary-fixed-variant);
+  background-color: var(--primary-fixed-dim);
 }
 @media (width < 600px) {
   .subtitleParagraph {
     width: 100vw;
-    padding: 3rem;
+    padding: 1rem;
+    right: 0;
   }
+}
+
+.thumbnails {
+  width: 33.3333333333%;
+  height: 100%;
+  margin: 100%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+
+.thumbnails .img {
+  width: 100%;
+  object-fit: cover;
+  object-position: 50% 20%;
+}
+
+.black {
+  text-align: center;
+  background: #000;
+  background-blend-mode: multiply;
+  color: #fff;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  opacity: 0.2;
+}
+
+.title {
+  color: #fff;
+  font-size: 2em;
+  align-self: center;
+  position: absolute;
+  z-index: 10;
+}
+
+.black,
+.title {
+  transition: opacity 0.3s;
+}
+
+.thumbnails:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+  z-index: 20;
+}
+
+.thumbnails:hover .black,
+.thumbnails:hover .title {
+  opacity: 0;
 }

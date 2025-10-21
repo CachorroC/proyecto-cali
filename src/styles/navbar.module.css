@@ -1,4 +1,5 @@
 .drawer {
+  box-sizing: border-box;
   container-name: modal;
   z-index: 5;
   container-type: inline-size;
@@ -13,16 +14,12 @@
   display: flex;
   opacity: 1;
   transition: all 1.5s ease-in-out;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(12, 1fr);
   gap: 2vmin;
-  grid-template-areas: "title title title title  drawerMenuButton " ". inputSearchBar inputSearchBar inputSearchBar drawerMenuButton" "ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList" "ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList" "ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList" "ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList" "ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList" "ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList" "ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList" "ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList" "ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList" "ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList ProcesosLayoutList";
   justify-content: space-evenly;
   align-content: flex-start;
   justify-items: stretch;
   align-items: stretch;
   color: var(--on-background);
-  box-sizing: border-box;
   grid-gap: 2vmin;
   box-shadow: var(--dp16);
   text-align: center;
@@ -55,6 +52,9 @@
     display: flex;
     flex-flow: column nowrap;
   }
+  .drawer .sidenav {
+    width: 100%;
+  }
 }
 
 .closed {
@@ -81,7 +81,8 @@
   flex: 1 1 calc(50% - 2vmin);
 }
 
-.button, .buttonHome, .buttonDrawerMenuClosed, .buttonDrawerMenu, .buttonBackwards, .buttonForward {
+.button, .buttonHome, .buttonDrawerMenuOpen, .buttonDrawerMenuClosed, .buttonDrawerMenu, .buttonBackwards, .buttonForward {
+  z-index: 10;
   border: none;
   border-radius: var(--shape-corner-large);
   display: flex;
@@ -137,8 +138,18 @@
 .buttonDrawerMenuClosed:hover:after, .buttonDrawerMenuClosed:focus:after, .buttonDrawerMenuClosed:active:after {
   background-color: var(--surface-variant);
 }
+@media (width < 600px) {
+  .buttonDrawerMenuClosed {
+    bottom: 1%;
+    right: 1%;
+    top: auto;
+    left: auto;
+  }
+}
 .buttonDrawerMenuOpen {
+  width: 50%;
   background-color: var(--secondary);
+  color: var(--on-secondary);
 }
 .buttonDrawerMenuOpen > .icon {
   color: var(--on-secondary);
@@ -152,17 +163,17 @@
 .buttonHome > .icon {
   color: var(--on-primary);
 }
-.button > .ButtonTextHelper, .buttonForward > .ButtonTextHelper, .buttonBackwards > .ButtonTextHelper, .buttonDrawerMenu > .ButtonTextHelper, .buttonDrawerMenuClosed > .ButtonTextHelper, .buttonHome > .ButtonTextHelper {
+.button > .ButtonTextHelper, .buttonForward > .ButtonTextHelper, .buttonBackwards > .ButtonTextHelper, .buttonDrawerMenu > .ButtonTextHelper, .buttonDrawerMenuClosed > .ButtonTextHelper, .buttonDrawerMenuOpen > .ButtonTextHelper, .buttonHome > .ButtonTextHelper {
   display: none;
   opacity: 0;
   transition: all 1s;
 }
-.button:hover, .buttonForward:hover, .buttonBackwards:hover, .buttonDrawerMenu:hover, .buttonDrawerMenuClosed:hover, .buttonHome:hover, .button:active, .buttonForward:active, .buttonBackwards:active, .buttonDrawerMenu:active, .buttonDrawerMenuClosed:active, .buttonHome:active {
+.button:hover, .buttonForward:hover, .buttonBackwards:hover, .buttonDrawerMenu:hover, .buttonDrawerMenuClosed:hover, .buttonDrawerMenuOpen:hover, .buttonHome:hover, .button:active, .buttonForward:active, .buttonBackwards:active, .buttonDrawerMenu:active, .buttonDrawerMenuClosed:active, .buttonDrawerMenuOpen:active, .buttonHome:active {
   background-color: var(--primary-fixed);
   box-shadow: var(--dp6);
   border: 2px solid var(--outline);
 }
-.button:hover > span, .buttonForward:hover > span, .buttonBackwards:hover > span, .buttonDrawerMenu:hover > span, .buttonDrawerMenuClosed:hover > span, .buttonHome:hover > span, .button:active > span, .buttonForward:active > span, .buttonBackwards:active > span, .buttonDrawerMenu:active > span, .buttonDrawerMenuClosed:active > span, .buttonHome:active > span {
+.button:hover > span, .buttonForward:hover > span, .buttonBackwards:hover > span, .buttonDrawerMenu:hover > span, .buttonDrawerMenuClosed:hover > span, .buttonDrawerMenuOpen:hover > span, .buttonHome:hover > span, .button:active > span, .buttonForward:active > span, .buttonBackwards:active > span, .buttonDrawerMenu:active > span, .buttonDrawerMenuClosed:active > span, .buttonDrawerMenuOpen:active > span, .buttonHome:active > span {
   font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 200, "opsz" 24;
   color: var(--on-primary-fixed);
 }

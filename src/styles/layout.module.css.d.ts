@@ -13,6 +13,7 @@ declare const styles: {
   readonly "buttonModal": string;
   readonly "buttonPassiveCategory": string;
   readonly "container": string;
+  readonly "containerMain": string;
   readonly "divission": string;
   readonly "gridContainer": string;
   readonly "header": string;
@@ -25,6 +26,7 @@ declare const styles: {
   readonly "linkActive": string;
   readonly "linkOpen": string;
   readonly "linkOpenActive": string;
+  readonly "listContainer": string;
   readonly "loader": string;
   readonly "nav": string;
   readonly "right": string;
@@ -37,7 +39,9 @@ declare const styles: {
   readonly "segmentRow": string;
   readonly "segmentRowWrap": string;
   readonly "spin": string;
+  readonly "splitContainer": string;
   readonly "text": string;
+  readonly "textContainer": string;
   readonly "title": string;
   readonly "titleInput": string;
   readonly "top": string;

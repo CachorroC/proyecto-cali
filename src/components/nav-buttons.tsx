@@ -12,7 +12,7 @@ import { buttonDrawerMenuClosed,
 
 export const DrawerMenuButton = () => {
   const {
-    isNavOpen, setIsNavOpen 
+    isNavOpen, setIsNavOpen
   } = useNavigationContext();
 
   return (
@@ -24,10 +24,10 @@ export const DrawerMenuButton = () => {
       onClick={() => {
         setIsNavOpen(
           (
-            n 
+            n
           ) => {
             return !n;
-          } 
+          }
         );
       }}
     >
@@ -42,7 +42,7 @@ export const DrawerMenuButton = () => {
 
 export default function NavButtons() {
   const {
-    isNavOpen, setIsNavOpen 
+    isNavOpen, setIsNavOpen
   } = useNavigationContext();
 
   return (
@@ -52,7 +52,7 @@ export default function NavButtons() {
         className={styles.buttonDrawerClosed}
         onClick={() => {
           setIsNavOpen(
-            !isNavOpen 
+            !isNavOpen
           );
         }}
       >
