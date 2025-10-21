@@ -4,31 +4,18 @@ import { Loader } from '../main-loader';
 import styles from './styles.module.css';
 import { useState, useRef, Suspense } from 'react';
 
-export default function VideoPlayer(
-  {
-    sourceUrl
-  }: { sourceUrl: string }
-) {
-  const [
-    isPlaying,
-    setIsPlaying
-  ] = useState(
-    false
-  );
+export default function VideoPlayer({ sourceUrl }: { sourceUrl: string }) {
+  const [isPlaying, setIsPlaying] = useState(false);
 
-  const ref = useRef<HTMLVideoElement | null>(
-    null
-  );
+  const ref = useRef<HTMLVideoElement | null>(null);
 
   function handleClick() {
     const nextIsPlaying = !isPlaying;
 
-    setIsPlaying(
-      nextIsPlaying
-    );
+    setIsPlaying(nextIsPlaying);
 
-    if ( ref.current ) {
-      if ( nextIsPlaying ) {
+    if (ref.current) {
+      if (nextIsPlaying) {
         ref.current.play();
       } else {
         ref.current.pause();
@@ -37,19 +24,20 @@ export default function VideoPlayer(
   }
 
   return (
-    <div style={{width: '100%', height: '100%'}} className={sectionColumn}>
+    <div
+      style={{ width: '100%', height: '100%' }}
+      className={sectionColumn}
+    >
       <Suspense fallback={<Loader />}>
         <video
           ref={ref}
+          loop
+          poster={'loading.gif'}
           onPlay={() => {
-            return setIsPlaying(
-              true
-            );
+            return setIsPlaying(true);
           }}
           onPause={() => {
-            return setIsPlaying(
-              false
-            );
+            return setIsPlaying(false);
           }}
         >
           <source
@@ -62,13 +50,9 @@ export default function VideoPlayer(
         onClick={handleClick}
         className={styles.button}
       >
-        {isPlaying
-          ? 'Pausar'
-          : 'Reproducir'}
+        {isPlaying ? 'Pausar' : 'Reproducir'}
         <span className={'material-symbols-outlined'}>
-          {isPlaying
-            ? 'pause_circle'
-            : 'play_circle'}
+          {isPlaying ? 'pause_circle' : 'play_circle'}
         </span>
       </button>
     </div>

@@ -14,19 +14,13 @@ export const themeOptions: ThemeOptions = {
       main: '#ff5449',
     },
   },
-   colorSchemes: {
+  colorSchemes: {
     light: true,
     dark: true,
   },
-
 };
 
-const theme = createTheme(themeOptions)
-export default function ThemeComponent ( { children }: { children: ReactNode; } )
-{
-  return (
-    <ThemeProvider theme={ theme}>
-      {children}
-</ThemeProvider>
-  )
+const theme = createTheme(themeOptions);
+export default function ThemeComponent({ children }: { children: ReactNode }) {
+  return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
 }

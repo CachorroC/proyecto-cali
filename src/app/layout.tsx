@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from 'next';
 import {
-  Geist_Mono,
   Josefin_Sans,
   Playfair_Display,
   PT_Serif_Caption,
@@ -13,7 +12,6 @@ import { ReactNode } from 'react';
 import { NavigationContextProvider } from './context/navigation-context';
 import 'material-symbols';
 import Script from 'next/script';
-import NavigationIcon from '@mui/icons-material/Navigation';
 
 const prefix = process.env.NODE_ENV === 'production' ? 'app' : 'beta';
 
@@ -87,11 +85,6 @@ const josefinSans = Josefin_Sans({
   subsets: ['latin'],
 });
 
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
-});
-
 const playDisp = Playfair_Display({
   subsets: ['latin-ext', 'latin'],
   preload: true,
@@ -131,7 +124,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${josefinSans.className} ${geistMono.variable} ${playDisp.variable}  ${raleway.variable} ${radio.variable} ${ptserif.variable}[ color-scheme: light dark ]`}
+        className={`${josefinSans.className} ${playDisp.variable}  ${raleway.variable} ${radio.variable} ${ptserif.variable} [ color-scheme: light dark ]`}
       >
         <ThemeComponent>
           <NavigationContextProvider>

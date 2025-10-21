@@ -1,11 +1,3 @@
-$MinLW: 1200px; //minimum large width
-$MaxLW: 1800px; // maximum large width
-$Bp1W: 960px;
-$MaxMW: 1200px;
-$MinMW: 600px;
-$MinSW: 320px; // minimum small width
-$MaxSW: 480px; //maximum sma width
-
 .container {
   transition: all 0.5s;
   display: flex;
@@ -15,6 +7,7 @@ $MaxSW: 480px; //maximum sma width
   align-content: stretch;
   text-align: center;
   width: 100%;
+  height: 100%;
   gap: 1rem;
   box-sizing: border-box;
   background-color: var(--surface-container);
@@ -30,7 +23,14 @@ $MaxSW: 480px; //maximum sma width
     padding: 0;
   }
 
-  /* @media (600px < width < 1200px) {
+  @media (width < 600px) {
+    display: flex;
+    flex-flow: column nowrap;
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  @media (600px < width < 1200px) {
     grid-template-columns: 5rem repeat(8, 1fr);
     grid-template-rows: repeat(12, minmax(4vh, 1fr));
     grid-template-areas:
@@ -46,22 +46,10 @@ $MaxSW: 480px; //maximum sma width
       'header left left left left left left right right'
       'header left left left left left left right right'
       'header left left left left left left right right';
-  } */
+  }
 
   @media (1200px < width) {
-    grid-template-columns: 5rem repeat(9, minmax(8vw, 1fr));
-    grid-template-rows: repeat(10, minmax(6svh, 1fr));
-    grid-template-areas:
-      'header top top top top top top top top top'
-      'header left left left left left left right right right'
-      'header left left left left left left right right right'
-      'header left left left left left left right right right'
-      'header left left left left left left right right right'
-      'header left left left left left left right right right'
-      'header left left left left left left right right right'
-      'header left left left left left left right right right'
-      'header left left left left left left right right right'
-      'header left left left left left left right right right';
+    padding: 1rem 1rem 1rem 6rem;
   }
 }
 .textContainer {
@@ -76,7 +64,6 @@ $MaxSW: 480px; //maximum sma width
   width: 100%;
   gap: 0.03rem;
   padding: 0;
-  height: 100svh;
   box-sizing: border-box;
   background-color: var(--surface-container);
   grid-auto-flow: row;
@@ -100,23 +87,13 @@ $MaxSW: 480px; //maximum sma width
     'left'
     'header';
   @media (width < 600px) {
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(12, 1fr);
-    padding: 0.5rem 0.5rem 0 0.5rem;
-    gap: 0.2rem;
-    grid-template-areas:
-      'top top top top'
-      'left left left left'
-      'left left left left'
-      'left left left left'
-      'left left left left'
-      'left left left left'
-      'left left left left'
-      'left left left left'
-      'left left left left'
-      'right right right right'
-      'right right right right'
-      'header header header header';
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: stretch;
+    gap: 1rem;
+    height: 100%;
   }
 
   @media (600px < width < 1200px) {
@@ -140,19 +117,11 @@ $MaxSW: 480px; //maximum sma width
   @media (1200px < width) {
     padding: 0;
     gap: 1rem;
-    grid-template-columns: 5rem repeat(9, minmax(8vw, 1fr));
-    grid-template-rows: repeat(10, minmax(6svh, 1fr));
+    grid-template-columns: repeat(3, minmax(min-content, 1fr));
+    grid-template-rows: repeat(2, minmax(6svh, 1fr));
     grid-template-areas:
-      ' left left left left left left right right right right'
-      ' left left left left left left right right right right'
-      ' left left left left left left right right right right'
-      ' left left left left left left right right right right'
-      ' left left left left left left right right right right'
-      ' left left left left left left right right right right'
-      ' left left left left left left right right right right'
-      ' left left left left left left right right right right'
-      ' left left left left left left right right right right'
-      ' left left left left left left right right right right';
+      'left left right '
+      'left left right ';
   }
 }
 
@@ -199,7 +168,6 @@ $MaxSW: 480px; //maximum sma width
   background-color: var(--surface);
   max-width: 100vw;
   grid-area: right;
-  overflow: auto;
   gap: 1rem;
   box-sizing: border-box;
   @media (width < 600px) {
@@ -243,14 +211,16 @@ $MaxSW: 480px; //maximum sma width
   border-radius: var(--shape-corner-large);
   max-width: 100%;
   padding: 2vmin;
-  overflow: auto;
   display: flex;
   flex-flow: column nowrap;
   gap: 1rem;
   counter-reset: num;
-  grid-template-columns: repeat(4, 1fr);
-  grid-auto-columns: 1fr;
-  grid-auto-rows: 300px;
+
+  align-items: stretch;
+  justify-content: space-evenly;
+  align-content: stretch;
+  flex-wrap: nowrap;
+  flex-direction: column;
 
   &Column {
     @extend .left;
@@ -284,7 +254,21 @@ $MaxSW: 480px; //maximum sma width
     flex-flow: column nowrap;
   }
 }
-
+.card {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  background-color: var(--surface-container-low);
+  grid-area: left;
+  border-radius: var(--shape-corner-medium);
+  box-shadow: var(--elevation-1);
+  max-width: 100%;
+  padding: 2vmin;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 1rem;
+  counter-reset: num;
+}
 .divission {
   height: 100%;
   width: 5px;

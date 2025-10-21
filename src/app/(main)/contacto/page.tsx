@@ -5,18 +5,12 @@ import { icon } from '#@/styles/layout.module.css';
 import styles from '#@/styles/contacto.module.css';
 
 function ContactoForm() {
-  const [
-    formState,
-    formAction,
-    isPending
-  ] = useActionState(
-    addToCart, {
-      email   : '',
-      nombre  : '',
-      telefono: '',
-      mensaje : '',
-    }
-  );
+  const [formState, formAction, isPending] = useActionState(addToCart, {
+    email: '',
+    nombre: '',
+    telefono: '',
+    mensaje: '',
+  });
 
   return (
     <div
@@ -66,15 +60,11 @@ function ContactoForm() {
           type="submit"
           className={styles.submitBtn}
         >
-          <span className={`materialsymbolsoutlined ${ icon }`}>
-            {isPending
-              ? 'hourglass_bottom'
-              : 'send'}
+          <span className={`materialsymbolsoutlined ${icon}`}>
+            {isPending ? 'hourglass_bottom' : 'send'}
           </span>
         </button>
-        {isPending
-          ? 'Loading...'
-          : 'enviada'}
+        {isPending ? 'Loading...' : 'enviada'}
       </form>
     </div>
   );

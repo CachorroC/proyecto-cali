@@ -4,18 +4,14 @@ import styles from '#@/styles/page.module.css';
 import React, { useRef } from 'react';
 
 export default function Home() {
-  const targetRef = useRef<HTMLParagraphElement | null>(
-    null 
-  );
+  const targetRef = useRef<HTMLParagraphElement | null>(null);
 
   const scrollToElement = () => {
-    if ( targetRef.current ) {
-      targetRef.current.scrollIntoView(
-        {
-          behavior: 'smooth',
-          block   : 'start',
-        } 
-      );
+    if (targetRef.current) {
+      targetRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
     }
   };
 

@@ -1,49 +1,44 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import styles from '#@/styles/layout.module.css';
 import { NavLink } from './NavLink';
 import { useNavigationContext } from '#@/app/context/navigation-context';
 import { Route } from 'next';
-import { buttonDrawerMenuClosed,
-  buttonDrawerMenuOpen, } from '#@/styles/navbar.module.css';
+import {
+  buttonDrawerMenuClosed,
+  buttonDrawerMenuOpen,
+} from '#@/styles/navbar.module.css';
 
 // TODO: arreglar lo de la navegacion
 
 export const DrawerMenuButton = () => {
-  const {
-    isNavOpen, setIsNavOpen
-  } = useNavigationContext();
+  const { isNavOpen, setIsNavOpen } = useNavigationContext();
+
+  const pathname = usePathname();
+  if (pathname === '/') {
+    return null;
+  }
 
   return (
     <button
       type="button"
-      className={isNavOpen
-        ? buttonDrawerMenuOpen
-        : buttonDrawerMenuClosed}
+      className={isNavOpen ? buttonDrawerMenuOpen : buttonDrawerMenuClosed}
       onClick={() => {
-        setIsNavOpen(
-          (
-            n
-          ) => {
-            return !n;
-          }
-        );
+        setIsNavOpen((n) => {
+          return !n;
+        });
       }}
     >
-      <span className={`material-symbols-outlined ${ styles.icon }`}>
-        {isNavOpen
-          ? 'close'
-          : 'menu'}
+      <span className={`material-symbols-outlined ${styles.icon}`}>
+        {isNavOpen ? 'close' : 'menu'}
       </span>
     </button>
   );
 };
 
 export default function NavButtons() {
-  const {
-    isNavOpen, setIsNavOpen
-  } = useNavigationContext();
+  const { isNavOpen, setIsNavOpen } = useNavigationContext();
 
   return (
     <>
@@ -51,15 +46,11 @@ export default function NavButtons() {
         type="button"
         className={styles.buttonDrawerClosed}
         onClick={() => {
-          setIsNavOpen(
-            !isNavOpen
-          );
+          setIsNavOpen(!isNavOpen);
         }}
       >
-        <span className={`material-symbols-outlined ${ styles.icon }`}>
-          {isNavOpen
-            ? 'close'
-            : 'menu'}
+        <span className={`material-symbols-outlined ${styles.icon}`}>
+          {isNavOpen ? 'close' : 'menu'}
         </span>
       </button>
       <NavLink
@@ -83,7 +74,7 @@ export function ForwardBackwardNavButtons() {
           router.back();
         }}
       >
-        <span className={`material-symbols-outlined ${ styles.icon }`}>
+        <span className={`material-symbols-outlined ${styles.icon}`}>
           chevron_left
         </span>
         <p className={styles.text}>atras</p>
@@ -95,7 +86,7 @@ export function ForwardBackwardNavButtons() {
           router.forward();
         }}
       >
-        <span className={`material-symbols-outlined ${ styles.icon }`}>
+        <span className={`material-symbols-outlined ${styles.icon}`}>
           chevron_right
         </span>
         <p className={styles.text}>entrar</p>

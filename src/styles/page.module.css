@@ -63,7 +63,10 @@
   padding: 0 20px;
   border: 1px solid transparent;
   box-sizing: border-box;
-  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  transition:
+    background 0.2s,
+    color 0.2s,
+    border-color 0.2s;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -141,7 +144,10 @@ a.secondary {
     justify-content: center;
   }
 }
-.parallax, .parallaxImage3, .parallaxImage2, .parallaxImage1 {
+.parallax,
+.parallaxImage3,
+.parallaxImage2,
+.parallaxImage1 {
   /* The image used */
   height: 100vh; /* Create the parallax scrolling effect */
   background-attachment: fixed;
@@ -151,13 +157,13 @@ a.secondary {
   box-shadow: var(--elevation-inset);
 }
 .parallaxImage1 {
-  background-image: url("/salsabaile.jpg"); /* Full height */
+  background-image: url('/salsabaile.jpg'); /* Full height */
 }
 .parallaxImage2 {
-  background-image: url("/caliciudad.jpeg"); /* Full height */
+  background-image: url('/caliciudad.jpeg'); /* Full height */
 }
 .parallaxImage3 {
-  background-image: url("/escuela_de_baile.jpg"); /* Full height */
+  background-image: url('/escuela_de_baile.jpg'); /* Full height */
 }
 
 .scrollButton {
@@ -182,10 +188,18 @@ a.secondary {
   box-sizing: border-box;
   box-shadow: var(--elevation-3);
 }
-.scrollButton:hover, .scrollButton:focus, .scrollButton:active {
+.scrollButton:hover,
+.scrollButton:focus,
+.scrollButton:active {
   box-shadow: var(--elevation-4);
   background-color: var(--secondary);
   color: var(--on-secondary);
+}
+@media (width < 600px) {
+  .scrollButton {
+    width: 100%;
+    right: 0;
+  }
 }
 
 .textParagraph {
@@ -223,8 +237,8 @@ a.secondary {
   position: absolute;
   bottom: 50%;
   right: 10%;
-  color: var(--on-primary-fixed);
-  background-color: var(--primary-fixed);
+  color: var(--primary-fixed);
+  filter: drop-shadow(0px 6px 5px #3d3d3d);
 }
 @media (width < 600px) {
   .titleParagraph {
@@ -252,8 +266,8 @@ a.secondary {
   font-size: var(--title-medium-font-size);
   line-height: var(--title-medium-line-height);
   letter-spacing: var(--title-medium-letter-spacing);
-  color: var(--on-primary-fixed-variant);
-  background-color: var(--primary-fixed-dim);
+  color: var(--on-primary-container);
+  background-color: var(--primary-container);
 }
 @media (width < 600px) {
   .subtitleParagraph {

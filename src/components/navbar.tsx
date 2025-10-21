@@ -15,9 +15,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 
 export const NavBar = () => {
-  const {
-    isNavOpen , setIsNavOpen
-  } = useNavigationContext();
+  const { isNavOpen, setIsNavOpen } = useNavigationContext();
 
   return (
     <div className={styles.header}>
@@ -47,7 +45,11 @@ export const NavBar = () => {
               textLabel={'Historias de Vida'}
               hrefLabel={'/historias_de_vida'}
             />
-            <NavLink iconLabel={ 'special_character' } textLabel={ 'Reflexión final' } hrefLabel={ '/reflexion_final' } />
+            <NavLink
+              iconLabel={'special_character'}
+              textLabel={'Reflexión final'}
+              hrefLabel={'/reflexion_final'}
+            />
             <NavLink
               iconLabel={'contact_mail'}
               textLabel={'contáctenos'}
