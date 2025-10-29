@@ -8,56 +8,56 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
-import Paper from '@mui/material/Paper';
 import layout from '#@/styles/layout.module.css';
 import { SectionDirection } from '#@/components/layout-section';
 
-export default function Page() {
+export default function Page () {
   const listTextContent = [
     {
-      primaryContent: `Nelson Nuñez`,
-      secondaryContent: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus`,
-      avatar: '/avatar1.png',
+      primaryContent  : 'Nelson Nuñez',
+      secondaryContent: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus',
+      avatar          : '/avatar1.png',
     },
     {
-      primaryContent: `Nelson Nuñez`,
-      secondaryContent: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus`,
-      avatar: '/avatar2.png',
+      primaryContent  : 'Nelson Nuñez',
+      secondaryContent: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus',
+      avatar          : '/avatar2.png',
     },
     {
-      primaryContent: `Nelson Nuñez`,
-      secondaryContent: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus`,
-      avatar: '/avatar3.png',
+      primaryContent  : 'Nelson Nuñez',
+      secondaryContent: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus',
+      avatar          : '/avatar3.png',
     },
     {
-      primaryContent: `Nelson Nuñez`,
-      secondaryContent: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus`,
-      avatar: '/avatar4.png',
+      primaryContent  : 'Nelson Nuñez',
+      secondaryContent: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus',
+      avatar          : '/avatar4.png',
     },
     {
-      primaryContent: `Nelson Nuñez`,
-      avatar: '/avatar5.png',
+      primaryContent: 'Nelson Nuñez',
+      avatar        : '/avatar5.png',
     },
     {
-      primaryContent: `Nelson Nuñez`,
-      secondaryContent: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus`,
-      avatar: '/avatar1.png',
+      primaryContent  : 'Nelson Nuñez',
+      secondaryContent: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus',
+      avatar          : '/avatar1.png',
     },
     {
-      primaryContent: `Nelson Nuñez`,
-      secondaryContent: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus`,
-      avatar: '/avatar2.png',
+      primaryContent  : 'Nelson Nuñez',
+      secondaryContent: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus',
+      avatar          : '/avatar2.png',
     },
     {
-      primaryContent: `Nelson Nuñez`,
-      avatar: '/avatar3.png',
+      primaryContent: 'Nelson Nuñez',
+      avatar        : '/avatar3.png',
     },
     {
-      primaryContent: `Nelson Nuñez`,
-      secondaryContent: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus`,
-      avatar: '/avatar4.png',
+      primaryContent  : 'Nelson Nuñez',
+      secondaryContent: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus',
+      avatar          : '/avatar4.png',
     },
   ];
+
   return (
     <>
       <div className={layout.splitContainer}>
@@ -65,12 +65,12 @@ export default function Page() {
           <h1
             className={titleLarge}
             style={{
-              display: 'flex',
-              flexFlow: 'column nowrap',
-              alignItems: 'center',
+              display       : 'flex',
+              flexFlow      : 'column nowrap',
+              alignItems    : 'center',
               justifyContent: 'center',
-              alignContent: 'center',
-              flex: 1,
+              alignContent  : 'center',
+              flex          : 1
             }}
           >
             La voz de ellas, citas de las mujeres
@@ -79,37 +79,43 @@ export default function Page() {
           <List
             dense={false}
             sx={{
-              flex: 3,
+              flex     : 3,
               textAlign: 'center',
             }}
           >
-            {listTextContent.map((content, index) => {
-              return (
-                <ListItem
-                  key={index}
-                  alignItems="flex-start"
-                >
-                  <ListItemAvatar>
-                    <Avatar
-                      alt="Remy Sharp"
-                      src={content.avatar}
+            {listTextContent.map(
+              (
+                content, index
+              ) => {
+                return (
+                  <ListItem
+                    key={index}
+                    alignItems="flex-start"
+                  >
+                    <ListItemAvatar>
+                      <Avatar
+                        alt="Remy Sharp"
+                        src={content.avatar}
+                      />
+                    </ListItemAvatar>
+                    <ListItemText
+                      primary={content.primaryContent}
+                      secondary={
+                        content.secondaryContent
+                          ? content.secondaryContent
+                          : null
+                      }
                     />
-                  </ListItemAvatar>
-                  <ListItemText
-                    primary={content.primaryContent}
-                    secondary={
-                      content.secondaryContent ? content.secondaryContent : null
-                    }
-                  />
-                </ListItem>
-              );
-            })}
+                  </ListItem>
+                );
+              }
+            )}
           </List>
         </div>
 
         <div className={layout.right}>
           <Suspense fallback={<Loader />}>
-            <VideoPlayer sourceUrl={'/baileVideo.mp4'} />
+            <VideoPlayer sourceUrl={'/chikys_1.mp4'} />
           </Suspense>
         </div>
       </div>
@@ -117,7 +123,7 @@ export default function Page() {
         <SectionDirection>
           <div className={layout.sectionColumn}>
             <Suspense fallback={<Loader />}>
-              <VideoPlayer sourceUrl={'/baileVideo.mp4'} />
+              <VideoPlayer sourceUrl={'/chikys_2.mp4'} />
             </Suspense>{' '}
           </div>
           <div className={layout.sectionColumn}>
@@ -131,7 +137,7 @@ export default function Page() {
           </div>
           <div className={layout.sectionColumn}>
             <Suspense fallback={<Loader />}>
-              <VideoPlayer sourceUrl={'/salsa_baile_3.mp4'} />
+              <VideoPlayer sourceUrl={'/chikys_3.mp4'} />
             </Suspense>
           </div>
         </SectionDirection>

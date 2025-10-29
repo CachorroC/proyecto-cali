@@ -1,10 +1,15 @@
 FROM node:latest AS base
-RUN corepack enable && corepack enable pnpm
+WORKDIR /app
+RUN npm install -g pnpm corepack --force
+#RUN corepack enable && corepack enable pnpm
+ARG MONGODB_URI
+ENV MONGODB_URI=${MONGODB_URI}
+ARG NEXT_PUBLIC_MONGODB_URI
+ENV NEXT_PUBLIC_MONGODB_URI=${NEXT_PUBLIC_MONGODB_URI}
 
 # Step 1. Rebuild the source code only when needed
 FROM base AS builder
 
-WORKDIR /app
 
 COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
 
@@ -32,11 +37,15 @@ COPY tsconfig.json .
 
 # Build Next.js based on the preferred package manager
 #RUN npx prisma generate
+ARG MONGODB_URI
+ENV MONGODB_URI=${MONGODB_URI}
+ARG NEXT_PUBLIC_MONGODB_URI
+ENV NEXT_PUBLIC_MONGODB_URI=${NEXT_PUBLIC_MONGODB_URI}
 
 RUN \
   if [ -f yarn.lock ]; then yarn build; \
   elif [ -f package-lock.json ]; then npm run build; \
-  elif [ -f pnpm-lock.yaml ]; then pnpm update && pnpm build; \
+  elif [ -f pnpm-lock.yaml ]; then pnpm build; \
   else yarn build; \
   fi
 
@@ -44,6 +53,10 @@ RUN \
 
 # Step 2. Production image, copy all the files and run next
 FROM base AS runner
+ARG MONGODB_URI
+ENV MONGODB_URI=${MONGODB_URI}
+ARG NEXT_PUBLIC_MONGODB_URI
+ENV NEXT_PUBLIC_MONGODB_URI=${NEXT_PUBLIC_MONGODB_URI}
 
 WORKDIR /app
 
@@ -60,10 +73,7 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
 # Environment variables must be redefined at run time
-ARG MONGODB_URI
-ENV MONGODB_URI=${MONGODB_URI}
-ARG NEXT_PUBLIC_MONGODB_URI
-ENV NEXT_PUBLIC_MONGODB_URI=${NEXT_PUBLIC_MONGODB_URI}
+
 
 # Uncomment the following line to disable telemetry at run time
 # ENV NEXT_TELEMETRY_DISABLED 1

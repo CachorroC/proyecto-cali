@@ -5,7 +5,7 @@
  **/
 const nextConfig = {
   /* config options here */
-  output: 'standalone',
+  output     : 'standalone',
   typedRoutes: true,
 };
 

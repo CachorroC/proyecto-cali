@@ -163,7 +163,7 @@ a.secondary {
   border: none;
   border-radius: var(--shape-corner-large);
   display: flex;
-  flex-flow: column nowrap;
+  flex-flow: row nowrap;
   justify-items: center;
   align-items: center;
   justify-content: center;
@@ -185,6 +185,7 @@ a.secondary {
     color: var(--on-secondary);
   }
   @media (width < 600px) {
+    position: relative;
     width: 100%;
     right: 0;
   }
@@ -206,11 +207,30 @@ a.secondary {
   }
 }
 
+.contentComponent {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  @media (width<600px) {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-evenly;
+    align-items: stretch;
+    align-content: stretch;
+    gap: 1rem;
+    padding: 1rem;
+  }
+}
+
 .titleParagraph {
   text-align: center;
   box-sizing: border-box;
   align-self: center;
   display: flex;
+  border-radius: var(--shape-corner-large);
   flex-flow: column nowrap;
   justify-content: center;
   padding: 2rem;
@@ -223,9 +243,11 @@ a.secondary {
   position: absolute;
   bottom: 50%;
   right: 10%;
-  color: var(--primary-fixed);
-  filter: drop-shadow(0px 6px 5px #3d3d3d);
+  color: var(--primary);
+  background-color: var(--surface-container-highest);
+  box-shadow: var(--elevation-5);
   @media (width < 600px) {
+    position: relative;
     width: 100vw;
     padding: 1rem;
     right: 0;
@@ -250,9 +272,11 @@ a.secondary {
   font-size: var(--title-medium-font-size);
   line-height: var(--title-medium-line-height);
   letter-spacing: var(--title-medium-letter-spacing);
-  color: var(--on-primary-container);
-  background-color: var(--primary-container);
+  color: var(--secondary);
+  background-color: var(--surface-container-low);
+  box-shadow: var(--elevation-3);
   @media (width < 600px) {
+    position: relative;
     width: 100vw;
     padding: 1rem;
     right: 0;
@@ -274,17 +298,6 @@ a.secondary {
   width: 100%;
   object-fit: cover;
   object-position: 50% 20%;
-}
-
-.black {
-  text-align: center;
-  background: #000;
-  background-blend-mode: multiply;
-  color: #fff;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  opacity: 0.2;
 }
 
 .title {

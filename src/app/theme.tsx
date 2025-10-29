@@ -16,11 +16,18 @@ export const themeOptions: ThemeOptions = {
   },
   colorSchemes: {
     light: true,
-    dark: true,
+    dark : true,
   },
 };
 
-const theme = createTheme(themeOptions);
-export default function ThemeComponent({ children }: { children: ReactNode }) {
+const theme = createTheme(
+  themeOptions 
+);
+
+export default function ThemeComponent(
+  {
+    children 
+  }: { children: ReactNode } 
+) {
   return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
 }

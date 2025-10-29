@@ -63,10 +63,7 @@
   padding: 0 20px;
   border: 1px solid transparent;
   box-sizing: border-box;
-  transition:
-    background 0.2s,
-    color 0.2s,
-    border-color 0.2s;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -144,10 +141,7 @@ a.secondary {
     justify-content: center;
   }
 }
-.parallax,
-.parallaxImage3,
-.parallaxImage2,
-.parallaxImage1 {
+.parallax, .parallaxImage3, .parallaxImage2, .parallaxImage1 {
   /* The image used */
   height: 100vh; /* Create the parallax scrolling effect */
   background-attachment: fixed;
@@ -157,13 +151,13 @@ a.secondary {
   box-shadow: var(--elevation-inset);
 }
 .parallaxImage1 {
-  background-image: url('/salsabaile.jpg'); /* Full height */
+  background-image: url("/salsabaile.jpg"); /* Full height */
 }
 .parallaxImage2 {
-  background-image: url('/caliciudad.jpeg'); /* Full height */
+  background-image: url("/caliciudad.jpeg"); /* Full height */
 }
 .parallaxImage3 {
-  background-image: url('/escuela_de_baile.jpg'); /* Full height */
+  background-image: url("/escuela_de_baile.jpg"); /* Full height */
 }
 
 .scrollButton {
@@ -173,7 +167,7 @@ a.secondary {
   border: none;
   border-radius: var(--shape-corner-large);
   display: flex;
-  flex-flow: column nowrap;
+  flex-flow: row nowrap;
   justify-items: center;
   align-items: center;
   justify-content: center;
@@ -188,15 +182,14 @@ a.secondary {
   box-sizing: border-box;
   box-shadow: var(--elevation-3);
 }
-.scrollButton:hover,
-.scrollButton:focus,
-.scrollButton:active {
+.scrollButton:hover, .scrollButton:focus, .scrollButton:active {
   box-shadow: var(--elevation-4);
   background-color: var(--secondary);
   color: var(--on-secondary);
 }
 @media (width < 600px) {
   .scrollButton {
+    position: relative;
     width: 100%;
     right: 0;
   }
@@ -220,11 +213,32 @@ a.secondary {
   }
 }
 
+.contentComponent {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+@media (width < 600px) {
+  .contentComponent {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-evenly;
+    align-items: stretch;
+    align-content: stretch;
+    gap: 1rem;
+    padding: 1rem;
+  }
+}
+
 .titleParagraph {
   text-align: center;
   box-sizing: border-box;
   align-self: center;
   display: flex;
+  border-radius: var(--shape-corner-large);
   flex-flow: column nowrap;
   justify-content: center;
   padding: 2rem;
@@ -237,11 +251,13 @@ a.secondary {
   position: absolute;
   bottom: 50%;
   right: 10%;
-  color: var(--primary-fixed);
-  filter: drop-shadow(0px 6px 5px #3d3d3d);
+  color: var(--primary);
+  background-color: var(--surface-container-highest);
+  box-shadow: var(--elevation-5);
 }
 @media (width < 600px) {
   .titleParagraph {
+    position: relative;
     width: 100vw;
     padding: 1rem;
     right: 0;
@@ -266,11 +282,13 @@ a.secondary {
   font-size: var(--title-medium-font-size);
   line-height: var(--title-medium-line-height);
   letter-spacing: var(--title-medium-letter-spacing);
-  color: var(--on-primary-container);
-  background-color: var(--primary-container);
+  color: var(--secondary);
+  background-color: var(--surface-container-low);
+  box-shadow: var(--elevation-3);
 }
 @media (width < 600px) {
   .subtitleParagraph {
+    position: relative;
     width: 100vw;
     padding: 1rem;
     right: 0;
@@ -292,17 +310,6 @@ a.secondary {
   width: 100%;
   object-fit: cover;
   object-position: 50% 20%;
-}
-
-.black {
-  text-align: center;
-  background: #000;
-  background-blend-mode: multiply;
-  color: #fff;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  opacity: 0.2;
 }
 
 .title {

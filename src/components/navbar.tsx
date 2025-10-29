@@ -7,15 +7,11 @@ import { NavLink } from './NavLink';
 import { Route } from 'next';
 import { Loader } from './main-loader';
 import { Suspense } from 'react';
-import SwipeableDrawer from '@mui/material/SwipeableDrawer';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
 
 export const NavBar = () => {
-  const { isNavOpen, setIsNavOpen } = useNavigationContext();
+  const {
+    isNavOpen
+  } = useNavigationContext();
 
   return (
     <div className={styles.header}>
@@ -51,25 +47,16 @@ export const NavBar = () => {
               hrefLabel={'/reflexion_final'}
             />
             <NavLink
-              iconLabel={'contact_mail'}
-              textLabel={'contáctenos'}
-              hrefLabel={'/contacto'}
-            />
-            <NavLink
-              iconLabel={'list'}
-              textLabel={'mensajes del servidor'}
-              hrefLabel={'/contacto/lista'}
+              iconLabel={'chat_add_on'}
+              textLabel={'Comentarios y Consideraciones'}
+              hrefLabel={'/comentarios' as Route}
             />
             <NavLink
               iconLabel={'bookmark_check'}
               textLabel={'créditos'}
               hrefLabel={'/creditos'}
             />
-            <NavLink
-              iconLabel={'taunt'}
-              textLabel={'baile'}
-              hrefLabel={'/baile'}
-            />
+
           </Drawer>
         </Suspense>
       )}

@@ -5,19 +5,21 @@ import Link from 'next/link';
 import styles from '#@/styles/layout.module.css';
 import { useNavigationContext } from '#@/app/context/navigation-context';
 import { Route } from 'next';
-import { labelLarge } from '#@/styles/typography.module.css';
-import Paper from '@mui/material/Paper';
 
-export function NavLink<T extends string>({
-  hrefLabel,
-  iconLabel,
-  textLabel,
-}: {
-  iconLabel: string;
-  textLabel: string;
-  hrefLabel: Route<T> | URL;
-}) {
-  const { isNavOpen, setIsNavOpen } = useNavigationContext();
+export function NavLink<T extends string>(
+  {
+    hrefLabel,
+    iconLabel,
+    textLabel,
+  }: {
+    iconLabel: string;
+    textLabel: string;
+    hrefLabel: Route<T> | URL;
+  }
+) {
+  const {
+    setIsNavOpen
+  } = useNavigationContext();
 
   const pathname = usePathname();
 
@@ -26,13 +28,17 @@ export function NavLink<T extends string>({
   return (
     <Link
       key={hrefLabel.toString()}
-      className={isActive ? styles.linkOpenActive : styles.linkOpen}
+      className={isActive
+        ? styles.linkOpenActive
+        : styles.linkOpen}
       onClick={() => {
-        setIsNavOpen(false);
+        setIsNavOpen(
+          false
+        );
       }}
       href={hrefLabel as Route}
     >
-      <span className={`material-symbols-outlined ${styles.icon}`}>
+      <span className={`material-symbols-outlined ${ styles.icon }`}>
         {iconLabel}
       </span>
       <h1 className={styles.text}>{textLabel}</h1>
