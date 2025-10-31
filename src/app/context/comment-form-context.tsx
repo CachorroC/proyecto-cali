@@ -2,7 +2,7 @@
 // ActionProvider.js
 import React, { ReactNode } from 'react';
 import { useActionState, createContext, useContext } from 'react'; // Assuming React 19+
-import { addComment} from '../actions';
+import { addComment } from '../actions';
 import { comentarioType, formActionStateType } from '#@/types/comentarios';
 
 const ActionContext = createContext<{
@@ -25,7 +25,11 @@ export const FormActionProvider = (
     isPending
   ] = useActionState(
     addComment,
-{mensaje:'', nombre: '', _id: commentsLength ++}
+    {
+      mensaje: '',
+      nombre : '',
+      _id    : commentsLength + 1
+    }
   );
 
   return (

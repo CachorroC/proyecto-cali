@@ -8,7 +8,9 @@ import { addComment } from '#@/app/actions';
 import { useActionContext } from '#@/app/context/comment-form-context';
 
 export function CommentForm() {
-  const {actionState, submitAction, isActionPending} = useActionContext()
+  const {
+    actionState, submitAction, isActionPending
+  } = useActionContext();
 
   return (
     <div

@@ -173,6 +173,7 @@ a.secondary {
   justify-content: center;
   align-content: center;
   transition: all 0.3s;
+  gap: 1rem;
   height: 56px;
   width: auto;
   font-size: 24px;
@@ -267,7 +268,7 @@ a.secondary {
 
 .subtitleParagraph {
   position: absolute;
-  bottom: 15%;
+  bottom: 35%;
   right: 10%;
   text-align: center;
   box-sizing: border-box;
@@ -275,6 +276,7 @@ a.secondary {
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
+  border-radius: var(--shape-corner-large);
   padding: 2rem;
   font-family: var(--title-medium-font-family-name);
   font-style: var(--title-medium-font-family-style);
@@ -288,6 +290,38 @@ a.secondary {
 }
 @media (width < 600px) {
   .subtitleParagraph {
+    position: relative;
+    width: 100vw;
+    padding: 1rem;
+    right: 0;
+  }
+}
+
+.logosBackground {
+  position: absolute;
+  bottom: 15%;
+  right: 10%;
+  text-align: center;
+  box-sizing: border-box;
+  align-self: center;
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 2rem;
+  justify-content: center;
+  border-radius: var(--shape-corner-large);
+  padding: 2rem;
+  font-family: var(--title-medium-font-family-name);
+  font-style: var(--title-medium-font-family-style);
+  font-weight: var(--title-medium-font-weight);
+  font-size: var(--title-medium-font-size);
+  line-height: var(--title-medium-line-height);
+  letter-spacing: var(--title-medium-letter-spacing);
+  color: var(--secondary);
+  background-color: var(--surface-container-lowest);
+  box-shadow: var(--elevation-3);
+}
+@media (width < 600px) {
+  .logosBackground {
     position: relative;
     width: 100vw;
     padding: 1rem;

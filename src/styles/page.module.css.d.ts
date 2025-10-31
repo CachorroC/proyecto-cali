@@ -4,6 +4,7 @@ declare const styles: {
   readonly "ctas": string;
   readonly "footer": string;
   readonly "img": string;
+  readonly "logosBackground": string;
   readonly "main": string;
   readonly "page": string;
   readonly "parallax": string;

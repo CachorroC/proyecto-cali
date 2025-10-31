@@ -51,6 +51,7 @@
   border: 2px solid var(--outline);
   box-sizing: border-box;
   border-radius: 12px;
+  font-family: inherit;
   font-size: 16px;
   transition: all 0.3s ease;
   background: var(--surface-container-highest);

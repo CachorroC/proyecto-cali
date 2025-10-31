@@ -1,14 +1,12 @@
 'use server';
 
 import { contactoCollection } from '#@/lib/connection/collections';
-import { comentarioType,  formActionStateType } from '#@/types/comentarios';
+import { comentarioType, formActionStateType } from '#@/types/comentarios';
 import { revalidateTag } from 'next/cache';
 
-
 export async function addCommentBasic(
-  queryData: FormData,
+  queryData: FormData
 ) {
-
   const nombre = queryData.get(
     'nombre'
   );
@@ -16,12 +14,17 @@ export async function addCommentBasic(
   const mensaje = queryData.get(
     'mensaje'
   );
-  const id = queryData.get('id')
+
+  const id = queryData.get(
+    'id'
+  );
 
   const inputForm = {
-    nombre  : `${ nombre }`,
+    nombre : `${ nombre }`,
     mensaje: `${ mensaje }`,
-    _id: parseInt( `${ id }` )
+    _id    : parseInt(
+      `${ id }`
+    ),
   };
 
   // Add a fake delay to make waiting noticeable.
@@ -56,25 +59,25 @@ export async function addCommentBasic(
   if ( insertion.acknowledged === false ) {
     return {
       inputForm: null,
-      success  : false
+      success  : false,
     };
   }
 
   return {
     inputForm: {
       ...inputForm,
-      _id: parseInt(insertion.insertedId.toString())
+      _id: parseInt(
+        insertion.insertedId.toString()
+      ),
     },
-    success: true
+    success: true,
   };
 }
 
 export async function addComment(
   prevState: comentarioType,
   queryData: FormData,
-) {
-
-
+): Promise<comentarioType> {
   const nombre = queryData.get(
     'nombre'
   );
@@ -83,87 +86,127 @@ export async function addComment(
     'mensaje'
   );
 
-  const id = queryData.get('id')
+  const id = queryData.get(
+    'id'
+  );
 
   const inputForm = {
-    nombre  : `${ nombre }`,
+    nombre : `${ nombre }`,
     mensaje: `${ mensaje }`,
-    _id: parseInt(`${ id }`)
+    _id    : parseInt(
+      `${ id }`
+    ),
   };
 
-
   const collection = await contactoCollection();
 
-  const insertComment = await collection.insertOne(
-    inputForm
-  );
+  try {
+    const insertComment = await collection.insertOne(
+      inputForm
+    );
 
-  const stringified = JSON.stringify(
-    inputForm
-  );
+    if ( insertComment.acknowledged === false ) {
+      console.log(
+        `el insertOperation arrojó falso en la salida ${ insertComment.acknowledged }`,
+      );
 
-  const objectified = JSON.parse(
-    stringified
-  );
+      return {
+        ...prevState,
+        ...inputForm
+      };
+    }
 
-  revalidateTag(
-    'comment', 'max'
-  );
+    revalidateTag(
+      'comment', 'max'
+    );
 
-  return objectified as comentarioType;
+    return {
+      ...prevState,
+      ...inputForm,
+      _id: parseInt(
+        insertComment.insertedId.toString()
+      ),
+    };
+
+  } catch ( error ) {
+    console.log(
+      error 
+    );
+  }
+
+
+  return {
+    ...prevState,
+    ...inputForm
+  };
 }
-export async function deleteComment ( commentId: number )
-{
+
+export async function deleteComment(
+  commentId: number
+) {
   const collection = await contactoCollection();
-  const deleteCommentAction = await collection.deleteOne( { _id: commentId } )
+
+  const deleteCommentAction = await collection.deleteOne(
+    {
+      _id: commentId
+    }
+  );
+
   if ( deleteCommentAction.acknowledged === false ) {
     return {
-      success  : false
+      success: false,
     };
   }
 
   return {
-    success: true
+    success: true,
   };
 }
 
 export async function editCommentBasic(
-  queryData: comentarioType,
+  queryData: comentarioType
 ) {
-
   const inputForm = {
-    nombre  : `${ queryData.nombre }`,
-    mensaje : `${ queryData.mensaje }`,
+    nombre : `${ queryData.nombre }`,
+    mensaje: `${ queryData.mensaje }`,
   };
 
   const collection = await contactoCollection();
 
   const editDocument = await collection.updateOne(
     {
-      _id: queryData._id
-    }, {
+      _id: queryData._id,
+    },
+    {
       $set: {
         mensaje: inputForm.mensaje,
-      }
-    }
+      },
+    },
   );
-  console.log( editDocument.acknowledged );
-  console.log(editDocument.modifiedCount)
+
+  console.log(
+    editDocument.acknowledged
+  );
+  console.log(
+    editDocument.modifiedCount
+  );
+
   if ( editDocument.acknowledged === false ) {
     return {
       inputForm: null,
-      success  : false
+      success  : false,
     };
   }
 
   return {
     inputForm: {
       ...inputForm,
-      _id: parseInt(editDocument.upsertedId?.toString() ?? '')
+      _id: parseInt(
+        editDocument.upsertedId?.toString() ?? ''
+      ),
     },
-    success: true
+    success: true,
   };
-
 }
 
 export async function myActionFunction(
@@ -191,9 +234,11 @@ export async function myActionFunction(
   );
 
   const inputForm = {
-    nombre  : `${ nombre }`,
+    nombre : `${ nombre }`,
     mensaje: `${ mensaje }`,
-    _id: parseInt(`${ id }`)
+    _id    : parseInt(
+      `${ id }`
+    ),
   };
 
   const collection = await contactoCollection();
@@ -201,7 +246,9 @@ export async function myActionFunction(
   if ( prevState.delete ) {
     const deletResult = await collection.deleteOne(
       {
-        _id: parseInt(`${ id }`),
+        _id: parseInt(
+          `${ id }`
+        ),
       }
     );
 
@@ -214,11 +261,13 @@ export async function myActionFunction(
   if ( id ) {
     const updteOne = await collection.updateOne(
       {
-        _id: parseInt(`${ id }`)
+        _id: parseInt(
+          `${ id }`
+        ),
       },
       {
-        nombre  : inputForm.nombre,
-        mensaje : inputForm.mensaje,
+        nombre : inputForm.nombre,
+        mensaje: inputForm.mensaje,
       },
     );
 
@@ -230,7 +279,7 @@ export async function myActionFunction(
       error  : null,
       delete : null,
       edit   : null,
-      message: inputForm
+      message: inputForm,
     };
   }
 
@@ -258,10 +307,9 @@ export async function myActionFunction(
     id     : insertOne.insertedId.toString(),
     message: {
       ...inputForm,
-      _id: parseInt(insertOne.insertedId.toString())
+      _id: parseInt(
+        insertOne.insertedId.toString()
+      ),
     },
   };
-
-
-
 }

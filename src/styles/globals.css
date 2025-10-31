@@ -469,3 +469,26 @@ textarea:focus {
 video {
   width: 100%;
 }
+
+p {
+  font-family: var(--raleway);
+  font-style: var(--body-medium-font-family-style);
+  font-variation-settings: "wght" 300;
+  font-size: var(--body-medium-font-size);
+  letter-spacing: var(--body-medium-letter-spacing);
+  line-height: var(--body-medium-line-height);
+  text-transform: var(--body-medium-text-transform);
+  text-decoration: var(--body-medium-text-decoration);
+}
+
+h2 {
+  font-family: var(--josefa);
+  font-variation-settings: wght 800;
+  font-style: var(--title-large-font-family-style);
+  font-size: var(--title-large-font-size);
+  letter-spacing: var(--title-large-letter-spacing);
+  line-height: var(--title-large-line-height);
+  text-transform: var(--title-large-text-transform);
+  text-decoration: var(--title-large-text-decoration);
+  padding: 1rem 0;
+}

@@ -52,7 +52,10 @@ export default async function Page () {
       ...comments
     ] }
     >
-      <FormActionProvider  commentsLength={ [...comments].length }>
+      <FormActionProvider  commentsLength={ [
+        ...comments
+      ].length }
+      >
         <div className={layout.splitContainer}>
           <div className={layout.right}>
             <Suspense fallback={<Loader />}>

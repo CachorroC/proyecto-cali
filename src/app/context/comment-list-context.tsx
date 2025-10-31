@@ -5,8 +5,7 @@ import { useActionState, createContext, useContext } from 'react'; // Assuming R
 import { addComment,
   addCommentBasic,
   deleteComment,
-  editCommentBasic,
- } from '../actions';
+  editCommentBasic, } from '../actions';
 import { comentarioType, CommentsAction } from '#@/types/comentarios';
 import { commentsReducer } from './comments-list-reducer';
 
@@ -40,7 +39,7 @@ export const FormListProvider = (
   ] = useReducer(
     commentsReducer,
     initialComments,
-    );
+  );
 
 
   const handleAddcomment = async (
@@ -80,20 +79,21 @@ export const FormListProvider = (
 
   const handleDeletecomment = async(
     commentId: number
-  ) =>
-  {
-    const result = await deleteComment( commentId )
-    if ( result.success )
-    {
-      dispatch(
-      {
-        type: 'delete',
-        id  : commentId,
-      }
+  ) => {
+    const result = await deleteComment(
+      commentId 
     );
+
+    if ( result.success ) {
+      dispatch(
+        {
+          type: 'delete',
+          id  : commentId,
+        }
+      );
     }
 
-  }
+  };
 
   return (
     <CommentsStateDispatchContext.Provider
