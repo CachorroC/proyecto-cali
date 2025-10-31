@@ -1,7 +1,7 @@
 import { Loader } from '#@/components/main-loader';
 import VideoComponent from '#@/components/video/video-component';
 import VideoPlayer from '#@/components/video/videoPlayer';
-import { titleLarge } from '#@/styles/typography.module.css';
+import typography from '#@/styles/typography.module.css';
 import { Suspense } from 'react';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -70,7 +70,7 @@ export default function Page() {
       <div className={layout.splitContainer}>
         <div className={layout.left}>
           <h1
-            className={titleLarge}
+            className={typography.headlineLarge}
             style={{
               display: 'flex',
               flexFlow: 'column nowrap',
@@ -119,8 +119,8 @@ export default function Page() {
         </div>
 
         <div className={layout.right}>
-          <h2>Academia XYZ</h2>
-          <p>
+          <h2 className={typography.titleMedium}>Academia XYZ</h2>
+          <p className={typography.bodyMedium}>
             Un breve video con la participación de los pequeños de la Academia
             XYZ, mostrando cómo se vive y se baila la salsa desde los más
             pequeños.
@@ -133,8 +133,8 @@ export default function Page() {
       <div className={layout.card}>
         <SectionDirection>
           <div className={layout.sectionColumn}>
-            <h2>Academia XYZ</h2>
-            <p>
+            <h2 className={typography.titleMedium}>Academia XYZ</h2>
+            <p className={typography.bodyMedium}>
               Un breve video con la participación de los pequeños de la Academia
               XYZ, mostrando cómo se vive y se baila la salsa desde los más
               pequeños.
@@ -144,8 +144,8 @@ export default function Page() {
             </Suspense>{' '}
           </div>
           <div className={layout.sectionColumn}>
-            <h2>Academia XYZ</h2>
-            <p>
+            <h2 className={typography.titleMedium}>Academia XYZ</h2>
+            <p className={typography.bodyMedium}>
               Un breve video con la participación de los pequeños de la Academia
               XYZ, mostrando cómo se vive y se baila la salsa desde los más
               pequeños.
@@ -159,8 +159,8 @@ export default function Page() {
             </Suspense>{' '}
           </div>
           <div className={layout.sectionColumn}>
-            <h2>Academia XYZ</h2>
-            <p>
+            <h2 className={typography.titleMedium}>Academia XYZ</h2>
+            <p className={typography.bodyMedium}>
               Un breve video con la participación de los pequeños de la Academia
               XYZ, mostrando cómo se vive y se baila la salsa desde los más
               pequeños.

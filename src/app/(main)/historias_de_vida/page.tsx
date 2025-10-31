@@ -8,6 +8,7 @@ export default function Page() {
       <div className={layout.splitContainer}>
         <div className={layout.left}>
           <h5 className={headlineLarge}>mapa interactivo</h5>
+
           <iframe
             src="https://www.google.com/maps/d/embed?mid=11QJqlNl84myGamP9h_yrPC44QhrZ9kk&ehbc=2E312F"
             width="auto"
