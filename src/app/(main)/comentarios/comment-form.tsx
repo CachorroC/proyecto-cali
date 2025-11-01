@@ -7,7 +7,9 @@ import { icon } from '#@/styles/layout.module.css';
 import { useActionContext } from '#@/app/context/comment-list-context';
 
 export function CommentForm() {
-  const { actionState, submitAction, isActionPending } = useActionContext();
+  const {
+    actionState, submitAction, isActionPending 
+  } = useActionContext();
 
   return (
     <div
@@ -49,11 +51,15 @@ export function CommentForm() {
           type="submit"
           className={styles.submitBtn}
         >
-          <span className={`material-symbols-outlined ${icon}`}>
-            {isActionPending ? 'hourglass_bottom' : 'send'}
+          <span className={`material-symbols-outlined ${ icon }`}>
+            {isActionPending
+              ? 'hourglass_bottom'
+              : 'send'}
           </span>
         </button>
-        {isActionPending ? 'Loading...' : 'enviada'}
+        {isActionPending
+          ? 'Loading...'
+          : 'enviada'}
       </form>
     </div>
   );

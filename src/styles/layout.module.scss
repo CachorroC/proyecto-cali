@@ -436,7 +436,6 @@
   display: flex;
   border-radius: 2vmin;
   flex: 1;
-  gap: 2rem;
   justify-content: space-evenly;
   align-items: stretch;
   align-content: stretch;
@@ -448,6 +447,9 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
+    @media (width < 600px) {
+      flex-flow: column nowrap;
+    }
   }
 
   &Column {

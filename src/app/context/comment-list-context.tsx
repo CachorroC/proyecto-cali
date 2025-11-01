@@ -2,79 +2,114 @@
 // ActionProvider.js
 import React, { ActionDispatch, ReactNode, useReducer } from 'react';
 import { useActionState, createContext, useContext } from 'react'; // Assuming React 19+
-import {
-  addComment,
+import { addComment,
   addCommentBasic,
   deleteComment,
-  editCommentBasic,
-} from '../actions';
+  editCommentBasic, } from '../actions';
 import { comentarioType, CommentsAction } from '#@/types/comentarios';
 import { commentsReducer } from './comments-list-reducer';
 
 const ActionContext = createContext<{
   actionState: comentarioType;
-  submitAction: (payload: FormData) => void;
+  submitAction:(
+    payload: FormData ) => void;
   isActionPending: boolean;
-} | null>(null);
+} | null>( null 
+);
 
 const CommentsStateDispatchContext = createContext<{
   commentsState: comentarioType[];
   dispatchComments: ActionDispatch<[action: CommentsAction]>;
-} | null>(null);
+} | null>(
+  null 
+);
 
 const CommentsHandlersContext = createContext<{
-  handleAddcomment: (formData: FormData) => Promise<void>;
-  handleChangeComment: (formData: comentarioType) => Promise<void>;
-  handleDeletecomment: (commentId: number) => Promise<void>;
-} | null>(null);
+  handleAddcomment:(
+    formData: FormData ) => Promise<void>;
+  handleChangeComment: ( formData: comentarioType ) => Promise<void>;
+  handleDeletecomment: ( commentId: number ) => Promise<void>;
+} | null>( null 
+);
 
-export const FormListProvider = ({
-  children,
-  initialComments,
-}: {
-  children: ReactNode;
-  initialComments: comentarioType[];
-}) => {
-  const [commentsState, dispatch] = useReducer(
+export const FormListProvider = (
+  {
+    children,
+    initialComments,
+  }: {
+    children: ReactNode;
+    initialComments: comentarioType[];
+  } 
+) => {
+  const [
+    commentsState,
+    dispatch
+  ] = useReducer(
     commentsReducer,
     initialComments,
   );
-  const [state, formAction, isPending] = useActionState(addComment, {
-    mensaje: '',
-    nombre: '',
-    _id: commentsState.length + 1,
-  });
-  const handleAddcomment = async (formData: FormData) => {
-    const result = await addCommentBasic(formData);
 
-    if (result.success && result.inputForm) {
-      dispatch({
-        type: 'add',
-        payload: result.inputForm,
-      });
+  const [
+    state,
+    formAction,
+    isPending
+  ] = useActionState(
+    addComment, {
+      mensaje: '',
+      nombre : '',
+      _id    : commentsState.length + 1,
+    } 
+  );
+
+  const handleAddcomment = async (
+    formData: FormData 
+  ) => {
+    const result = await addCommentBasic(
+      formData 
+    );
+
+    if ( result.success && result.inputForm ) {
+      dispatch(
+        {
+          type   : 'add',
+          payload: result.inputForm,
+        } 
+      );
     }
   };
 
-  const handleChangeComment = async (formData: comentarioType) => {
-    const result = await editCommentBasic(formData);
+  const handleChangeComment = async (
+    formData: comentarioType 
+  ) => {
+    const result = await editCommentBasic(
+      formData 
+    );
 
-    if (result.success && result.inputForm) {
-      dispatch({
-        type: 'change',
-        id: result.inputForm._id ?? 0,
-        payload: result.inputForm,
-      });
+    if ( result.success && result.inputForm ) {
+      dispatch(
+        {
+          type   : 'change',
+          id     : result.inputForm._id ?? 0,
+          payload: result.inputForm,
+        } 
+      );
     }
   };
 
-  const handleDeletecomment = async (commentId: number) => {
-    const result = await deleteComment(commentId);
+  const handleDeletecomment = async (
+    commentId: number 
+  ) => {
+    const result = await deleteComment(
+      commentId 
+    );
 
-    if (result.success) {
-      dispatch({
-        type: 'delete',
-        id: commentId,
-      });
+    if ( result.success ) {
+      dispatch(
+        {
+          type: 'delete',
+          id  : commentId,
+        } 
+      );
     }
   };
 
@@ -94,8 +129,8 @@ export const FormListProvider = ({
       >
         <ActionContext.Provider
           value={{
-            actionState: state,
-            submitAction: formAction,
+            actionState    : state,
+            submitAction   : formAction,
             isActionPending: isPending,
           }}
         >
@@ -107,30 +142,42 @@ export const FormListProvider = ({
 };
 
 export const useCommentsStateDispatchContext = () => {
-  const context = useContext(CommentsStateDispatchContext);
+  const context = useContext(
+    CommentsStateDispatchContext 
+  );
 
-  if (!context) {
-    throw new Error('usecommentsContext must be used within an ActionProvider');
+  if ( !context ) {
+    throw new Error(
+      'usecommentsContext must be used within an ActionProvider' 
+    );
   }
 
   return context;
 };
 
 export const useCommentsHandlersContext = () => {
-  const context = useContext(CommentsHandlersContext);
+  const context = useContext(
+    CommentsHandlersContext 
+  );
 
-  if (!context) {
-    throw new Error('usecommentsContext must be used within an ActionProvider');
+  if ( !context ) {
+    throw new Error(
+      'usecommentsContext must be used within an ActionProvider' 
+    );
   }
 
   return context;
 };
 
 export const useActionContext = () => {
-  const context = useContext(ActionContext);
+  const context = useContext(
+    ActionContext 
+  );
 
-  if (!context) {
-    throw new Error('useActionContext must be used within an ActionProvider');
+  if ( !context ) {
+    throw new Error(
+      'useActionContext must be used within an ActionProvider' 
+    );
   }
 
   return context;

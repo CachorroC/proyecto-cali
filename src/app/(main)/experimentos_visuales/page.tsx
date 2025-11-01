@@ -39,7 +39,7 @@ export default function Page() {
     },
     {
       primaryContent: 'Nelson Nuñez',
-      avatar: '/avatar5.png',
+      avatar        : '/avatar5.png',
     },
     {
       primaryContent: 'Nelson Nuñez',
@@ -55,7 +55,7 @@ export default function Page() {
     },
     {
       primaryContent: 'Nelson Nuñez',
-      avatar: '/avatar3.png',
+      avatar        : '/avatar3.png',
     },
     {
       primaryContent: 'Nelson Nuñez',
@@ -72,12 +72,12 @@ export default function Page() {
           <h1
             className={typography.headlineLarge}
             style={{
-              display: 'flex',
-              flexFlow: 'column nowrap',
-              alignItems: 'center',
+              display       : 'flex',
+              flexFlow      : 'column nowrap',
+              alignItems    : 'center',
               justifyContent: 'center',
-              alignContent: 'center',
-              flex: 1,
+              alignContent  : 'center',
+              flex          : 1,
             }}
           >
             La voz de ellas
@@ -90,31 +90,37 @@ export default function Page() {
           <List
             dense={false}
             sx={{
-              flex: 3,
+              flex     : 3,
               textAlign: 'center',
             }}
           >
-            {listTextContent.map((content, index) => {
-              return (
-                <ListItem
-                  key={index}
-                  alignItems="flex-start"
-                >
-                  <ListItemAvatar>
-                    <Avatar
-                      alt="Remy Sharp"
-                      src={content.avatar}
+            {listTextContent.map(
+              (
+                content, index 
+              ) => {
+                return (
+                  <ListItem
+                    key={index}
+                    alignItems="flex-start"
+                  >
+                    <ListItemAvatar>
+                      <Avatar
+                        alt="Remy Sharp"
+                        src={content.avatar}
+                      />
+                    </ListItemAvatar>
+                    <ListItemText
+                      primary={content.primaryContent}
+                      secondary={
+                        content.secondaryContent
+                          ? content.secondaryContent
+                          : null
+                      }
                     />
-                  </ListItemAvatar>
-                  <ListItemText
-                    primary={content.primaryContent}
-                    secondary={
-                      content.secondaryContent ? content.secondaryContent : null
-                    }
-                  />
-                </ListItem>
-              );
-            })}
+                  </ListItem>
+                );
+              } 
+            )}
           </List>
         </div>
 

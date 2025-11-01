@@ -15,19 +15,29 @@ const getCommentsCollection = unstable_cache(
 
     const listCollection = collection.find();
 
-    for await (const element of listCollection) {
-      const stringified = JSON.stringify(element);
+    for await ( const element of listCollection ) {
+      const stringified = JSON.stringify(
+        element 
+      );
 
-      const parsed = JSON.parse(stringified);
+      const parsed = JSON.parse(
+        stringified 
+      );
 
-      arrayList.push(parsed);
+      arrayList.push(
+        parsed 
+      );
     }
 
     return arrayList;
   },
-  ['comment'], // Needed if variables are not passed as parameters
+  [
+    'comment'
+  ], // Needed if variables are not passed as parameters
   {
-    tags: ['comment'],
+    tags: [
+      'comment'
+    ],
   },
 );
 
@@ -35,7 +45,10 @@ export default async function Page() {
   const comments = await getCommentsCollection();
 
   return (
-    <FormListProvider initialComments={[...comments]}>
+    <FormListProvider initialComments={[
+      ...comments
+    ]}
+    >
       <div className={layout.splitContainer}>
         <div className={layout.right}>
           <Suspense fallback={<Loader />}>

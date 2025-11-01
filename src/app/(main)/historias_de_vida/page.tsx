@@ -1,6 +1,7 @@
-import { headlineLarge } from '#@/styles/typography.module.css';
+import { headlineLarge, labelMedium } from '#@/styles/typography.module.css';
 import layout from '#@/styles/layout.module.css';
 import page from '#@/styles/page.module.css';
+import AudioPlayer from '#@/components/audio';
 
 export default function Page() {
   return (
@@ -16,7 +17,50 @@ export default function Page() {
           ></iframe>
         </div>
         <div className={layout.right}>
-          <div className={page.parallaxImage3}></div>
+          <div className={layout.sectionColumn}>
+            <h6 className={labelMedium}>Audio de las escuelas</h6>
+            <AudioPlayer sourceUrl={'/audio1.mp3'} />
+          </div>
+          <div className={layout.sectionColumn}>
+            <h6 className={labelMedium}>Audio de las escuelas</h6>
+            <AudioPlayer sourceUrl={'/audio1.mp3'} />
+          </div>
+          <div className={layout.sectionColumn}>
+            <h6 className={labelMedium}>Audio de las escuelas</h6>
+            <AudioPlayer sourceUrl={'/audio1.mp3'} />
+          </div>
+          <div className={layout.sectionColumn}>
+            <h6 className={labelMedium}>Audio de las escuelas</h6>
+            <AudioPlayer sourceUrl={'/audio1.mp3'} />
+          </div>
+          <div className={layout.sectionColumn}>
+            <h6 className={labelMedium}>Audio de las escuelas</h6>
+            <AudioPlayer sourceUrl={'/audio1.mp3'} />
+          </div>
+          <div className={layout.sectionColumn}>
+            <h6 className={labelMedium}>Audio de las escuelas</h6>
+            <AudioPlayer sourceUrl={'/audio1.mp3'} />
+          </div>
+          <div className={layout.sectionColumn}>
+            <h6 className={labelMedium}>Audio de las escuelas</h6>
+            <AudioPlayer sourceUrl={'/audio1.mp3'} />
+          </div>
+          <div className={layout.sectionColumn}>
+            <h6 className={labelMedium}>Audio de las escuelas</h6>
+            <AudioPlayer sourceUrl={'/audio1.mp3'} />
+          </div>
+          <div className={layout.sectionColumn}>
+            <h6 className={labelMedium}>Audio de las escuelas</h6>
+            <AudioPlayer sourceUrl={'/audio1.mp3'} />
+          </div>
+          <div className={layout.sectionColumn}>
+            <h6 className={labelMedium}>Audio de las escuelas</h6>
+            <AudioPlayer sourceUrl={'/audio1.mp3'} />
+          </div>
+          <div className={layout.sectionColumn}>
+            <h6 className={labelMedium}>Audio de las escuelas</h6>
+            <AudioPlayer sourceUrl={'/audio1.mp3'} />
+          </div>
         </div>
       </div>
     </div>
